@@ -10,7 +10,6 @@ import '@/router/routePermission';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-import "babel-polyfill";
 // import 'lib-flexible';
 
 Vue.use(ElementUI);

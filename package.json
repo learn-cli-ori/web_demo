@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "build": "vue-cli-service build  --mode production",
-        "start": "vue-cli-service serve"
+        "serve": "vue-cli-service serve"
     },
     "author": "lyh",
     "devDependencies": {
@@ -14,7 +14,6 @@
         "@vue/cli-plugin-babel": "^3.8.0",
         "@vue/cli-service": "^3.8.0",
         "autoprefixer": "^9.6.4",
-        "babel-loader": "^8.0.0",
         "css-loader": "^3.2.0",
         "file-loader": "^4.2.0",
         "sass": "^1.23.0",
