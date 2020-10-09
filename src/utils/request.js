@@ -1,7 +1,7 @@
 import axios from "axios";
 import qs from "qs";
 import reConfig from "@/reConfig/index";
-
+import { Loading } from "element-ui";
 export function request(prefix = reConfig.apiPrefix, config = {}) {
     const REQUEST = axiosConfig(prefix, config);
     let { loading } = config;
