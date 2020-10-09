@@ -4,9 +4,9 @@ const resolve = dir => {
     return path.join(__dirname, dir);
 };
 
-console.log(process.env.VUE_APP_API_URL);
 module.exports = {
-    publicPath: '/',
+    productionSourceMap: false,
+    publicPath: './',
     chainWebpack: config => {
         // 快捷路径地址，可自定义键值对
         config.resolve.alias.set('@', resolve('src'));

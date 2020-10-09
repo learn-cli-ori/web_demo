@@ -9,7 +9,8 @@ export default [{
     title: '测试',
     path: '/test',
     icon: 'el-icon-user-solid',
+    name:"test",
     children: [
-        { title: '测试接口', path: '/test/index' },
+        { title: '测试接口',  name:"testIndex", path: '/test/index' },
     ]
 }];

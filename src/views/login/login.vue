@@ -34,7 +34,6 @@ export default {
     name: 'Login',
     data () {
         return {
-            oss: 'https://resource.oss.yatiku.com/papaThinking/login',
             loginForm: {
                 tel: '',
                 password: ''
@@ -69,7 +68,7 @@ export default {
             // if (code == 200) {
             this.loading = false;
             this.$store.commit('setUserInfo', { 'username': params.tel });
-            this.$router.push('/home');
+            this.$router.push('/');
             // } 
             // else {
             //     this.loading = false;

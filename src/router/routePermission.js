@@ -2,71 +2,91 @@
  * @Author: lyh
  * @Date: 2019-11-06 11:44:21
  * @Last Modified by: lyh
- * @Last Modified time: 2020-01-06 16:28:20
+ * @Last Modified time: 2020-10-09 11:02:17
  * @Desc 获取权限
  */
 
-import { router, routerGo, defalRouter } from '@/router';
-import { getAdminAuthority } from '@/api/user';
-import store from '@/store';
-
+import { router, defaultRouter } from "@/router";
+import store from "@/store";
+import menu from "./menu";
 
 var getRouter = null; //用来获取后台拿到的路由
 
 // 重组路由对象
-function reGroup(params) {
-    //按需求设置
-    let tempRoute = [...defalRouter];
-
-    tempRoute[0].children = [...tempRoute[0].children, ...params];
-    return tempRoute;
+function reGroup(menuList) {
+    let childrenRouter = [];
+    let allRouter = defaultRouter;
+    menuList.map((item) => {
+        if (item.children && item.children.length) {
+            childrenRouter = [...childrenRouter, ...item.children];
+        } else {
+            childrenRouter.push(item);
+        }
+    });
+    allRouter[0].children = childrenRouter;
+    console.log("allRouter", allRouter);
+    return allRouter;
 }
 
-const whiteList = ['/login', '/404']; // 不重定向白名单
+export function routerGo(to, next, getRouter) {
+    getRouter = [...filterAsyncRouter(getRouter)]; //过滤路由
+    console.log("aaa", getRouter);
+    router.addRoutes(getRouter); //动态添加路由
+
+    next({ ...to, replace: true });
+}
+
+export function filterAsyncRouter(asyncRouterMap, isChildren) {
+    //遍历后台传来的路由字符串，转换为组件对象
+    console.log("asyncRouterMap", asyncRouterMap);
+    const accessedRouters = asyncRouterMap.filter((route) => {
+        if (route.children && route.children.length) {
+            route.children = filterAsyncRouter(route.children, true);
+        } else if (!route.component) {
+            console.log("path",`@/views${route.filePath || route.path}.vue`);
+            route.component = () =>
+                import(`@/views${route.filePath || route.path}.vue`);
+        }
+
+        return true;
+    });
+    console.log("accessedRouters", accessedRouters);
+    return accessedRouters;
+}
+
+const whiteList = ["/login", "/404"]; // 不重定向白名单
 
 // 导航守卫
-router.beforeEach(async(to, from, next) => {
-    document.title = to.meta.title || 'demo';
+router.beforeEach(async (to, from, next) => {
+    document.title = to.meta.title || "demo";
     if (store.state.userInfo) {
-        if (to.path === '/login') {
+        if (to.path === "/login") {
             next({
-                path: '/home'
+                path: "/home",
             });
         } else {
-            if (!getRouter) { //不加这个判断，路由会陷入死循环
+            if (!getRouter) {
+                //不加这个判断，路由会陷入死循环
                 if (!store.state.routeInfo) {
-                    let { code, data } = await getAdminAuthority();
-                    if (code == 200) {
-                        if (!data) {
-                            //清空用户
-                            store.commit('setUserInfo', null);
-                            //清空路由
-                            store.commit('setRouteInfo', null);
-                            next('/login');
-                            return;
-                        }
-                        store.commit('setRouteInfo', data);
-                        getRouter = reGroup(data);
-                        routerGo(to, next, getRouter); //执行路由跳转方法
-                    }
-                    // getAdminAuthority().then((res) => {
-                    //     if (res.code == 200) {
-                    //         if (!res.data) {
-                    //             //清空用户
-                    //             store.commit('setUserInfo', null);
-                    //             //清空路由
-                    //             store.commit('setRouteInfo', null);
-                    //             next('/login');
-                    //             return;
-                    //         }
-                    //         store.commit('setRouteInfo', res.data);
-                    //         getRouter = reGroup(res.data);
-                    //         routerGo(to, next, getRouter); //执行路由跳转方法
+                    store.commit("setRouteInfo", menu);
+                    getRouter = reGroup(menu);
+                    routerGo(to, next, getRouter); //执行路由跳转方法
+                    // let { code, data } = await getAdminAuthority();
+                    // if (code == 200) {
+                    //     if (!data) {
+                    //         //清空用户
+                    //         store.commit('setUserInfo', null);
+                    //         //清空路由
+                    //         store.commit('setRouteInfo', null);
+                    //         next('/login');
+                    //         return;
                     //     }
-                    // }).catch((e) => {
-                    //     console.log(e);
-                    // });
-                } else { //从缓存拿路由
+                    //     store.commit('setRouteInfo', data);
+                    //     getRouter = reGroup(data);
+                    //     routerGo(to, next, getRouter); //执行路由跳转方法
+                    // }
+                } else {
+                    //从缓存拿路由
                     getRouter = reGroup(store.state.routeInfo);
                     routerGo(to, next, getRouter);
                 }
@@ -79,8 +99,8 @@ router.beforeEach(async(to, from, next) => {
             next();
         } else {
             //清空路由
-            store.commit('setRouteInfo', null);
-            next('/login');
+            store.commit("setRouteInfo", null);
+            next("/login");
         }
     }
 });
