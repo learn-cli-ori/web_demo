@@ -1,0 +1,232 @@
+/*  布局 */
+.flex {
+    display: flex;
+}
+
+.flex-warp {
+    flex-wrap: wrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-end {
+    justify-content: flex-end;
+}
+
+.flex-column-center {
+    align-items: center;
+}
+
+.flex-column-end {
+    align-items: flex-end;
+}
+
+.flex-column {
+    flex-flow: column;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.radius-4 {
+    border-radius: 4px;
+}
+
+.radius-10 {
+    border-radius: 10px;
+}
+
+.radius-20 {
+    border-radius: 20px;
+}
+
+.radius-large {
+    border-radius: 50px;
+}
+
+.line-1 {
+    line-height: 1;
+}
+
+.relative {
+    position: relative;
+}
+
+// 全屏居中
+.left-top-center {
+    @include left-top-center;
+}
+
+// 全屏居上
+.top-center {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+// 全屏居下
+.bottom-center {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+// 全屏居左
+.left-center {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+}
+
+// 全屏居右
+.right-center {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translate(0, -50%);
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
+// 相对定位
+.relative {
+    position: relative;
+}
+
+// 粘性定位
+.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+// 全屏
+.full-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+}
+
+// 绝对全屏
+.full-screen-absolute {
+    @extend .full-screen;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    z-index: 5;
+}
+
+// 绝对左右居中
+.absolute-horizon-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+// 绝对垂直居中
+.absolute-vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.full-screen-absolute-center{
+    @extend .absolute-horizon-center;
+    @extend .absolute-vertical-center;
+}
+
+// 头部
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+// 底部
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+// 左下角
+.fixed-bottom-right {
+    position: fixed;
+    right: 15px;
+    right: 30rpx;
+    bottom: 0;
+    z-index: 10;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+// 去除滚动条
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+
+// 滚动条整体样式
+*::-webkit-scrollbar {
+	width: 4px; 
+	height: 12px;
+}
+
+//滚动条里面小方块
+*::-webkit-scrollbar-thumb {
+	border-radius: 5px;
+	width: 6px;
+	height: 12px;
+	background: rgba(0, 0, 0, 0.2);
+}
+
+//滚动条里面轨道
+*::-webkit-scrollbar-track {
+	border-radius: 0;
+}
