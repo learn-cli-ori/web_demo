@@ -174,12 +174,6 @@ export default {
             width: auto;
         }
     }
-    .el-submenu__title,
-    .el-menu-item {
-        &:hover i {
-            color: $main;
-        }
-    }
     .el-menu-item [class^="el-icon-"],
     .el-submenu__title [class^="el-icon-"] {
         margin-right: 15px;
