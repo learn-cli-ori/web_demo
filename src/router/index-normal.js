@@ -34,7 +34,7 @@ let routes = [
         path: "/",
         name: "home",
         component: () => import("@/views/index/home.vue"),
-        redirect: { name: "userList" },
+        redirect: { name: "testIndex" },
         children: reGroupRoute(),
     },
     {
