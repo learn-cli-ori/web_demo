@@ -23,7 +23,7 @@
                             v-for="(subItem, index) in item.children"
                             :key="index"
                             :index="subItem.path"
-                            >{{ subItem.title }}</el-menu-item
+                            >{{ subItem.meta.title || '' }}</el-menu-item
                         >
                     </el-menu-item-group>
                 </el-submenu>
@@ -37,7 +37,7 @@
                     class="flex-1"
                 >
                     <el-breadcrumb-item class="fz-18">{{
-                        $route.name
+                        $route.meta.title || ''
                     }}</el-breadcrumb-item>
                 </el-breadcrumb>
                 <el-image

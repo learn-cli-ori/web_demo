@@ -13,7 +13,9 @@ export default [
         name: "test",
         children: [
             {
-                title: "测试接口",
+                meta: {
+                    title: "测试接口",
+                },
                 name: "testIndex",
                 path: "/test/index",
                 component: () => import("@/views/test/index.vue"),
