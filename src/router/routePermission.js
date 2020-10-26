@@ -2,7 +2,7 @@
  * @Author: lyh
  * @Date: 2019-11-06 11:44:21
  * @Last Modified by: lyh
- * @Last Modified time: 2020-10-09 11:02:17
+ * @Last Modified time: 2020-10-26 17:58:38
  * @Desc 获取权限
  */
 
@@ -23,34 +23,28 @@ function reGroup(menuList) {
             childrenRouter.push(item);
         }
     });
-    allRouter[0].children = childrenRouter;
-    console.log("allRouter", allRouter);
+    defaultRouter[0].children = childrenRouter
     return allRouter;
 }
 
 export function routerGo(to, next, getRouter) {
     getRouter = [...filterAsyncRouter(getRouter)]; //过滤路由
-    console.log("aaa", getRouter);
     router.addRoutes(getRouter); //动态添加路由
-
     next({ ...to, replace: true });
 }
 
 export function filterAsyncRouter(asyncRouterMap, isChildren) {
     //遍历后台传来的路由字符串，转换为组件对象
-    console.log("asyncRouterMap", asyncRouterMap);
-    const accessedRouters = asyncRouterMap.filter((route) => {
+    const accessedRouters = asyncRouterMap.map((route) => {
         if (route.children && route.children.length) {
             route.children = filterAsyncRouter(route.children, true);
         } else if (!route.component) {
-            console.log("path",`@/views${route.filePath || route.path}.vue`);
             route.component = () =>
                 import(`@/views${route.filePath || route.path}.vue`);
         }
 
-        return true;
+        return route;
     });
-    console.log("accessedRouters", accessedRouters);
     return accessedRouters;
 }
 
@@ -62,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
     if (store.state.userInfo) {
         if (to.path === "/login") {
             next({
-                path: "/home",
+                path: "/test/index",
             });
         } else {
             if (!getRouter) {
@@ -88,6 +82,7 @@ router.beforeEach(async (to, from, next) => {
                 } else {
                     //从缓存拿路由
                     getRouter = reGroup(store.state.routeInfo);
+                    console.log("aaa");
                     routerGo(to, next, getRouter);
                 }
             } else {

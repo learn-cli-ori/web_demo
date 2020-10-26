@@ -32,7 +32,7 @@ let routes = [
     },
     {
         path: "/",
-        name: "main",
+        name: "home",
         component: () => import("@/views/index/main.vue"),
         redirect: { name: "login" },
         children: reGroupRoute(),
@@ -56,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
         next({ name: "login" });
     } else {
         if (to.name == "login" && store.state.userInfo) {
-            next({ name: "userList" });
+            next({ name: "home" });
         } else {
             next();
         }

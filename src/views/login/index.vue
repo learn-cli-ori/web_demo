@@ -107,7 +107,9 @@ export default {
             // if (code == 200) {
             this.loading = false;
             this.$store.commit("setUserInfo", { username: params.tel });
-            this.$router.push("/");
+            this.$router.push({
+                path:"/test/index"
+            });
             // }
             // else {
             //     this.loading = false;
