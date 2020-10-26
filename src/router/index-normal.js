@@ -20,7 +20,7 @@ let routes = [
     {
         path: "/login",
         name: "login",
-        component: () => import("@/views/login/login.vue"),
+        component: () => import("@/views/login/index.vue"),
         meta: {
             title: "后台管理系统",
         },
@@ -32,9 +32,9 @@ let routes = [
     },
     {
         path: "/",
-        name: "home",
-        component: () => import("@/views/index/home.vue"),
-        redirect: { name: "testIndex" },
+        name: "main",
+        component: () => import("@/views/index/main.vue"),
+        redirect: { name: "login" },
         children: reGroupRoute(),
     },
     {

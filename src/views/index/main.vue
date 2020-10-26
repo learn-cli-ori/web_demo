@@ -1,6 +1,6 @@
 <!-- 导航 -->
 <template>
-    <div id="home" class="flex" v-loading="globalLoading">
+    <div id="home" class="box" v-loading="globalLoading">
         <div class="left-menu">
             <el-menu
                 background-color="#545c64"
@@ -29,12 +29,12 @@
                 </el-submenu>
             </el-menu>
         </div>
-        <div class="content-container flex-1">
-            <div class="login-user flex flex-column-center">
+        <div class="content-container box-1">
+            <div class="login-user box box-column-center">
                 <i class="el-icon-s-unfold mr-10 fz-20"></i>
                 <el-breadcrumb
                     separator-class="el-icon-arrow-right"
-                    class="flex-1"
+                    class="box-1"
                 >
                     <el-breadcrumb-item class="fz-18">{{
                         $route.meta.title || ''
@@ -164,7 +164,7 @@ export default {
 <style lang="scss" scoped>
 #home {
     .el-menu {
-        border-right: 1px solid $basic;
+        border-right: 1px solid $cl-basic;
     }
     .el-submenu {
         width: 200px;
@@ -184,7 +184,7 @@ export default {
         height: 100vh;
         overflow-y: scroll;
         overflow-x: hidden;
-        background-color: $basic;
+        background-color: $cl-basic;
 
         &::-webkit-scrollbar {
             width: 0;
@@ -194,13 +194,13 @@ export default {
     .content-container {
         height: 100vh;
         overflow: hidden;
-        background-color: $white;
+        background-color: $cl-white;
 
         .login-user {
-            border-bottom: 2px solid $gray;
-            box-shadow: 1px 1px 2px 2px $gray;
+            border-bottom: 2px solid $cl-gray;
+            box-shadow: 1px 1px 2px 2px $cl-gray;
             padding: 20px;
-            background-color: $white;
+            background-color: $cl-white;
             z-index: 2001;
 
             .avatar {
@@ -211,7 +211,7 @@ export default {
             }
         }
         .breadcrumb {
-            box-shadow: 0 0 4px 4px $gray;
+            box-shadow: 0 0 4px 4px $cl-gray;
         }
         .router-box {
             height: calc(100vh - 65px);
@@ -223,7 +223,7 @@ export default {
                 height: 5px;
             }
             &::-webkit-scrollbar-thumb {
-                background-color: $basic;
+                background-color: $cl-basic;
             }
         }
     }

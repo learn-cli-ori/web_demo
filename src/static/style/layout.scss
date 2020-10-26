@@ -1,9 +1,9 @@
 /*  布局 */
-.flex {
+.box {
     display: flex;
 }
 
-.flex-warp {
+.box-warp {
     flex-wrap: wrap;
 }
 
@@ -11,35 +11,35 @@
     justify-content: space-between;
 }
 
-.flex-center {
+.box-center {
     justify-content: center;
 }
 
-.flex-start {
+.box-start {
     justify-content: flex-start;
 }
 
-.flex-end {
+.box-end {
     justify-content: flex-end;
 }
 
-.flex-column-center {
+.box-column-center {
     align-items: center;
 }
 
-.flex-column-end {
+.box-column-end {
     align-items: flex-end;
 }
 
-.flex-column {
+.box-column {
     flex-flow: column;
 }
 
-.flex-1 {
+.box-1 {
     flex: 1;
 }
 
-.flex-2 {
+.box-2 {
     flex: 2;
 }
 
@@ -167,8 +167,10 @@
 }
 
 .full-screen-absolute-center{
-    @extend .absolute-horizon-center;
-    @extend .absolute-vertical-center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 
 // 头部

@@ -20,7 +20,7 @@ html,body {
         PingFang SC, Hiragino Sans GB, Microsoft YaHei, Source Han Sans SC,
         WenQuanYi Micro Hei, sans-serif;
     min-height: 100vh;
-    color: $black;
+    color: $cl-black;
 }
 
 .container {
@@ -48,20 +48,20 @@ a {
 @each $name,
     $color
         in (
-            black: $black,
-            white: $white,
-            basic: $basic,
-            second: $second,
-            main: $main,
-            success: $success,
-            warning: $warning,
-            danger: $danger,
-            error: $error,
-            active: $active,
-            dark: $dark,
-            disabled:$disabled,
-            page: $dark,
-            gray: $gray
+            black: $cl-black,
+            white: $cl-white,
+            basic: $cl-basic,
+            second: $cl-second,
+            main: $cl-main,
+            success: $cl-success,
+            warning: $cl-warning,
+            danger: $cl-danger,
+            error: $cl-error,
+            active: $cl-active,
+            dark: $cl-dark,
+            disabled:$cl-disabled,
+            page: $cl-dark,
+            gray: $cl-gray
         )
 {
     .cl-#{ "" + $name } {
@@ -133,7 +133,7 @@ a {
 
 // 主题色外发光
 .theme-shadow {
-    box-shadow: 0 0 4px 4px $main;
+    box-shadow: 0 0 4px 4px $cl-main;
 }
 
 /* 超出隐藏 */
@@ -190,23 +190,23 @@ button {
 
 // 边框
 .border-all {
-    border: 1px solid $gray;
+    border: 1px solid $cl-gray;
 }
 
 .border-left {
-    border-left: 1px solid $gray;
+    border-left: 1px solid $cl-gray;
 }
 
 .border-bottom {
-    border-bottom: 1px solid $gray;
+    border-bottom: 1px solid $cl-gray;
 }
 
 .border-top {
-    border-top: 1px solid $gray;
+    border-top: 1px solid $cl-gray;
 }
 
 .border-right {
-    border-right: 1px solid $gray;
+    border-right: 1px solid $cl-gray;
 }
 
 .border-bold{

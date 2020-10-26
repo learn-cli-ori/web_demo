@@ -8,7 +8,7 @@ export const router = new Router({
     routes: [{
         path: '/login',
         name: 'login',
-        component: () => import("@/views/login/login.vue"),
+        component: () => import("@/views/login/index.vue"),
         meta: {
             title: 'demo'
         }
@@ -22,9 +22,9 @@ export const router = new Router({
 //默认路由
 export const defaultRouter = [{
     path: '/',
-    name: 'home',
+    name: 'main',
     component: () =>
-        import ('@/views/index/home.vue'),
+        import ('@/views/index/main.vue'),
     redirect: { name: "testIndex" },
     children: []
 }];
