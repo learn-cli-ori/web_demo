@@ -16,7 +16,7 @@ module.exports = {
         loaderOptions: {
             // 全局引入 scss
             sass: {
-                prependData: `@import "~@/static/style/theme.scss";@import "~@/static/style/mixin.scss";`
+                prependData: `@import "~@/static/style/theme.scss";`
             }
         },
     },
