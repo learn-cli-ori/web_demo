@@ -110,7 +110,6 @@ import reConfig from "@/reConfig";
 import menuList from "@/router/menu";
 export default {
     name: "menuIndex",
-
     data() {
         return {
             // menuList: this.$store.state.routeInfo || {},
