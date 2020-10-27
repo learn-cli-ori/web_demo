@@ -2,7 +2,7 @@
  * @Author: lyh
  * @Date: 2019-11-06 11:44:21
  * @Last Modified by: lyh
- * @Last Modified time: 2020-10-26 17:58:38
+ * @Last Modified time: 2020-10-27 16:00:21
  * @Desc 获取权限
  */
 
@@ -11,6 +11,7 @@ import store from "@/store";
 import menu from "./menu";
 
 var getRouter = null; //用来获取后台拿到的路由
+const whiteList = ["/login", "/404"]; // 不重定向白名单
 
 // 重组路由对象
 function reGroup(menuList) {
@@ -23,7 +24,7 @@ function reGroup(menuList) {
             childrenRouter.push(item);
         }
     });
-    defaultRouter[0].children = childrenRouter
+    defaultRouter[0].children = childrenRouter;
     return allRouter;
 }
 
@@ -48,18 +49,21 @@ export function filterAsyncRouter(asyncRouterMap, isChildren) {
     return accessedRouters;
 }
 
-const whiteList = ["/login", "/404"]; // 不重定向白名单
+
 
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
+
     document.title = to.meta.title || "demo";
     if (store.state.userInfo) {
         if (to.path === "/login") {
             next({
-                path: "/test/index",
+                name: "testIndex",
             });
         } else {
-            if (!getRouter) {
+            const hasRoute =
+                store.state.routeInfo && store.state.routeInfo.length > 0;
+            if (!getRouter || !hasRoute) {
                 //不加这个判断，路由会陷入死循环
                 if (!store.state.routeInfo) {
                     store.commit("setRouteInfo", menu);
@@ -82,7 +86,6 @@ router.beforeEach(async (to, from, next) => {
                 } else {
                     //从缓存拿路由
                     getRouter = reGroup(store.state.routeInfo);
-                    console.log("aaa");
                     routerGo(to, next, getRouter);
                 }
             } else {

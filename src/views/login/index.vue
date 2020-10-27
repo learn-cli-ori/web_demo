@@ -108,7 +108,7 @@ export default {
             this.loading = false;
             this.$store.commit("setUserInfo", { username: params.tel });
             this.$router.push({
-                path:"/test/index"
+                name:"testIndex"
             });
             // }
             // else {

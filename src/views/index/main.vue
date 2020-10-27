@@ -23,7 +23,7 @@
                             v-for="(subItem, index) in item.children"
                             :key="index"
                             :index="subItem.path"
-                            >{{ subItem.meta.title || '' }}</el-menu-item
+                            >{{ subItem.meta.title || "" }}</el-menu-item
                         >
                     </el-menu-item-group>
                 </el-submenu>
@@ -37,7 +37,7 @@
                     class="box-1"
                 >
                     <el-breadcrumb-item class="fz-18">{{
-                        $route.meta.title || ''
+                        $route.meta.title || ""
                     }}</el-breadcrumb-item>
                 </el-breadcrumb>
                 <el-image
@@ -129,10 +129,12 @@ export default {
     },
     methods: {
         async logOut() {
-            logout();
+            // await logout();
             this.$store.commit("setUserInfo", null);
             this.$store.commit("setRouteInfo", null);
-            window.location.href = `${location.origin}/login`;
+            this.$router.replace({
+                name: "login",
+            });
         },
 
         async updatePwd() {
