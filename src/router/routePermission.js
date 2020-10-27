@@ -2,14 +2,14 @@
  * @Author: lyh
  * @Date: 2019-11-06 11:44:21
  * @Last Modified by: lyh
- * @Last Modified time: 2020-10-27 16:00:21
+ * @Last Modified time: 2020-10-27 16:37:12
  * @Desc 获取权限
  */
 
 import { router, defaultRouter } from "@/router";
 import store from "@/store";
 import menu from "./menu";
-
+import { mapActions } from "vuex";
 var getRouter = null; //用来获取后台拿到的路由
 const whiteList = ["/login", "/404"]; // 不重定向白名单
 
@@ -49,12 +49,8 @@ export function filterAsyncRouter(asyncRouterMap, isChildren) {
     return accessedRouters;
 }
 
-
-
 // 导航守卫
 router.beforeEach(async (to, from, next) => {
-
-    document.title = to.meta.title || "demo";
     if (store.state.userInfo) {
         if (to.path === "/login") {
             next({

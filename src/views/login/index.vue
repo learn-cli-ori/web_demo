@@ -61,7 +61,8 @@
 </template>
 
 <script>
-import { login } from "@/api/user";
+import { adminLogin } from "@/api/index";
+import { mapActions } from "vuex";
 export default {
     name: "Login",
     data() {
@@ -88,6 +89,7 @@ export default {
     },
 
     methods: {
+        ...mapActions(["setUserInfo"]),
         // 用户登录验证
         handleLogin() {
             this.$refs.loginForm.validate((valid) => {
@@ -101,19 +103,18 @@ export default {
         },
         // 用户登录
         async login() {
-            let params = this.loginForm;
-
-            // let { code, data, message } = await login(params)
+            // let { code, data, message } = await adminLogin(this.loginForm);
             // if (code == 200) {
             this.loading = false;
-            this.$store.commit("setUserInfo", { username: params.tel });
-            this.$router.push({
-                name:"testIndex"
+            localStorage.setItem("admin-token", "aaaa");
+            this.setUserInfo({
+                username: this.loginForm.account,
             });
-            // }
-            // else {
+            this.$router.push({
+                name: "testIndex",
+            });
+            // } else {
             //     this.loading = false;
-            //     console.log(message);
             // }
         },
     },

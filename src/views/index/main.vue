@@ -103,8 +103,8 @@
 
 <script>
 // 导航列表
-import { mapState } from "vuex";
-import { logout } from "@/api/user";
+import { mapState, mapActions } from "vuex";
+import { quitLogin, updatePwd } from "@/api/index";
 import reConfig from "@/reConfig";
 // import menuList from "./menu";
 import menuList from "@/router/menu";
@@ -124,14 +124,18 @@ export default {
             },
         };
     },
-    created() {
-        console.log(this.$route);
-    },
+
     methods: {
+        ...mapActions(["setUserInfo"]),
         async logOut() {
-            // await logout();
-            this.$store.commit("setUserInfo", null);
-            this.$store.commit("setRouteInfo", null);
+            // let { code, data } = await quitLogin();
+            // if (code == 200) {
+            //     this.setUserInfo(null);
+            //     this.$router.replace({
+            //         name:'login'
+            //     })
+            // }
+            this.setUserInfo(null);
             this.$router.replace({
                 name: "login",
             });
@@ -152,7 +156,17 @@ export default {
             if (pwd1 != pwd2) {
                 return this.$message.error("两次密码不一致");
             }
-
+            // let { code, data, message } = await updatePwd({ pwd:pwd1, oldPwd });
+            // if (code == 200) {
+            //     this.showDialog = false;
+            //     this.$message.success("修改成功，请重新登录");
+            //     this.setUserInfo(null);
+            //     setTimeout(() => {
+            //       this.$router.replace({
+            //         name:'login'
+            //     })
+            //     }, 500);
+            // }
             this.showDialog = false;
         },
     },
