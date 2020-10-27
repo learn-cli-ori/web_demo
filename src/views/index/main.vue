@@ -1,6 +1,6 @@
 <!-- 导航 -->
 <template>
-    <div id="home" class="box" v-loading="globalLoading">
+    <div id="home" class="box">
         <div class="left-menu">
             <el-menu
                 background-color="#545c64"
@@ -172,7 +172,7 @@ export default {
     },
 
     computed: {
-        ...mapState(["globalLoading", "userInfo"]),
+        ...mapState(["userInfo"]),
     },
 };
 </script>
