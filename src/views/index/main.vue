@@ -102,17 +102,14 @@
 </template>
 
 <script>
-// 导航列表
 import { mapState, mapActions } from "vuex";
 import { quitLogin, updatePwd } from "@/api/index";
 import reConfig from "@/reConfig";
-// import menuList from "./menu";
 import menuList from "@/router/menu";
 export default {
     name: "menuIndex",
     data() {
         return {
-            // menuList: this.$store.state.routeInfo || {},
             menuList,
             showDialog: false,
             isCollapse: false,
@@ -126,6 +123,7 @@ export default {
 
     methods: {
         ...mapActions(["setUserInfo"]),
+        
         async logOut() {
             // let { code, data } = await quitLogin();
             // if (code == 200) {
