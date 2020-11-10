@@ -46,7 +46,7 @@
                     fit="fill"
                 ></el-image>
                 <span class="mr-10 ml-10">测试用户</span>
-                <el-button size="mini" type="primary" @click="showDialog = true"
+                <el-button size="small" type="primary" @click="showDialog = true"
                     >修改密码</el-button
                 >
                 <el-button size="small" type="danger" @click="logOut"
