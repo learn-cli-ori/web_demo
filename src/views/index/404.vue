@@ -20,9 +20,6 @@
 export default {
     name: 'Page404',
     computed: {
-        oss () {
-            return 'http://resource.oss.yatiku.com/backstageSystem/babthinking'
-        },
         message () {
             return '网管说这个页面你不能进......';
         }

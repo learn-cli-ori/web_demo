@@ -15,7 +15,7 @@
                     :index="item.path"
                 >
                     <template slot="title">
-                        <i class="el-icon-location"></i>
+                        <i :class="item.icon"></i>
                         <span>{{ item.title }}</span>
                     </template>
                     <el-menu-item-group>
