@@ -1,33 +1,31 @@
 @import "./theme";
+@import "./icon";
+@import "./mixin";
 @import "./layout";
+@import "./transition";
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
-    font-size: 16px;
+
     -webkit-tap-highlight-color: transparent;
 }
 
-span,p{
-    font-size: inherit;
-}
-
-html,body {
+html,
+body {
     font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Arial,
         PingFang SC, Hiragino Sans GB, Microsoft YaHei, Source Han Sans SC,
         WenQuanYi Micro Hei, sans-serif;
-    min-height: 100vh;
-    color: $cl-black;
+    // min-height: 100vh;
+    color: $black;
+    font-size: 16px;
 }
 
 .container {
-    height: 100vh;
-    padding: 20px;
-    font-size: 14px;
-    background-color: #fff;
-    overflow: auto;
+    height: 100%;
+    font-size: 16px;
 }
 
 li {
@@ -47,20 +45,21 @@ a {
 @each $name,
     $color
         in (
-            black: $cl-black,
-            white: $cl-white,
-            basic: $cl-basic,
-            second: $cl-second,
-            main: $cl-main,
-            success: $cl-success,
-            warning: $cl-warning,
-            danger: $cl-danger,
-            error: $cl-error,
-            active: $cl-active,
-            dark: $cl-dark,
-            disabled:$cl-disabled,
-            page: $cl-dark,
-            gray: $cl-gray
+            black: $black,
+            white: $white,
+            basic: $basic,
+            second: $second,
+            main: $main,
+            success: $success,
+            warning: $warning,
+            danger: $danger,
+            error: $error,
+            active: $active,
+            dark: $dark,
+            disabled: $disabled,
+            page: $dark,
+            gray: $gray,
+            text: $text
         )
 {
     .cl-#{ "" + $name } {
@@ -89,7 +88,7 @@ a {
 }
 
 // ---- 边距 ----
-@for $i from 1 through 10 {
+@for $i from 1 through 20 {
     .mt-#{$i * 5} {
         margin-top: $i * 5px;
     }
@@ -122,17 +121,17 @@ a {
     }
 }
 
-.full-width{
+.full-width {
     width: 100%;
 }
 
-.full-height{
+.full-height {
     height: 100%;
 }
 
 // 主题色外发光
 .theme-shadow {
-    box-shadow: 0 0 4px 4px $cl-main;
+    box-shadow: 0 0 4px 4px $main;
 }
 
 /* 超出隐藏 */
@@ -151,6 +150,10 @@ a {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+}
+
+.over-hidden{
+    overflow: hidden;
 }
 
 // 按钮默认样式
@@ -189,29 +192,29 @@ button {
 
 // 边框
 .border-all {
-    border: 1px solid $cl-gray;
+    border: 1px solid $border;
 }
 
 .border-left {
-    border-left: 1px solid $cl-gray;
+    border-left: 1px solid $border;
 }
 
 .border-bottom {
-    border-bottom: 1px solid $cl-gray;
+    border-bottom: 1px solid $border;
 }
 
 .border-top {
-    border-top: 1px solid $cl-gray;
+    border-top: 1px solid $border;
 }
 
 .border-right {
-    border-right: 1px solid $cl-gray;
+    border-right: 1px solid $border;
 }
 
-.border-bold{
+.border-bold {
     border-width: 5px;
 }
 
-.border-bolder{
+.border-bolder {
     border-width: 10px;
 }
