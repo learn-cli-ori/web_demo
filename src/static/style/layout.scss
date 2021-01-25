@@ -82,7 +82,10 @@
 
 // 全屏居中
 .left-top-center {
-    @include left-top-center;
+    position: fixed;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 // 全屏居上
