@@ -124,7 +124,7 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 .login-container {
     min-height: 100%;
-    background-color: $cl-basic;
+    background-color: #545c64;
     .login-box {
         top: 20%;
         .login-form {
@@ -136,11 +136,11 @@ export default {
                     border: 0px;
                     -webkit-appearance: none;
                     height: 100%;
-                    color: $cl-white;
-                    caret-color: $cl-white;
+                    color: #ffffff;
+                    caret-color: #ffffff;
                     &:-webkit-autofill {
-                        box-shadow: 0 0 0px 1000px $cl-basic inset !important;
-                        -webkit-text-fill-color: $cl-white !important;
+                        box-shadow: 0 0 0px 1000px #545c64 inset !important;
+                        -webkit-text-fill-color: #ffffff !important;
                     }
                 }
                 .el-input__inner {

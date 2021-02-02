@@ -177,7 +177,7 @@ export default {
 <style lang="scss" scoped>
 #home {
     .el-menu {
-        border-right: 1px solid $cl-basic;
+        border-right: 1px solid #545c64;
     }
     .el-submenu {
         width: 200px;
@@ -197,7 +197,7 @@ export default {
         height: 100vh;
         overflow-y: scroll;
         overflow-x: hidden;
-        background-color: $cl-basic;
+        background-color: #545c64;
 
         &::-webkit-scrollbar {
             width: 0;
@@ -207,13 +207,13 @@ export default {
     .content-container {
         height: 100vh;
         overflow: hidden;
-        background-color: $cl-white;
+        background-color: #ffffff;
 
         .login-user {
-            border-bottom: 2px solid $cl-gray;
-            box-shadow: 1px 1px 2px 2px $cl-gray;
+            border-bottom: 2px solid #f8f8f8;
+            box-shadow: 1px 1px 2px 2px #f8f8f8;
             padding: 20px;
-            background-color: $cl-white;
+            background-color: #ffffff;
             z-index: 2001;
 
             .avatar {
@@ -224,7 +224,7 @@ export default {
             }
         }
         .breadcrumb {
-            box-shadow: 0 0 4px 4px $cl-gray;
+            box-shadow: 0 0 4px 4px #f8f8f8;
         }
         .router-box {
             height: calc(100vh - 65px);
@@ -236,7 +236,7 @@ export default {
                 height: 5px;
             }
             &::-webkit-scrollbar-thumb {
-                background-color: $cl-basic;
+                background-color: #545c64;
             }
         }
     }

@@ -56,7 +56,7 @@ router.beforeEach(async (to, from, next) => {
         next({ name: "login" });
     } else {
         if (to.name == "login" && store.state.userInfo) {
-            next({ name: "home" });
+            next({ name: "testIndex" });
         } else {
             next();
         }
